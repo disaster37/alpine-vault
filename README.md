@@ -20,7 +20,7 @@ The Minio setting is managed by Confd. So you can custom it:
 Main parameters:
 - **VAULT_CONFIG_DEFAULTLEASETTL**: The default lease ttl use when generate token
 - **VAULT_CONFIG_MAXLEASETTL**: The maximum lease ttl use when generate token
-- **VAULT_CONFIG_STORAGE**: File or Consul
+- **VAULT_CONFIG_STORAGE**: file or consul
 
 Consul parameters:
 - **VAULT_CONFIG_CONSUL_ADDRESS**: The consul address server

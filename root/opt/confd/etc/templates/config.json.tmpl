@@ -7,7 +7,7 @@
             "scheme":"{{getv "/config/consul/scheme" "http"}}",
             {{- if (getenv "SCHEDULER_CONTAINER_NAME") }}
             "cluster_addr":"http://{{getenv "SCHEDULER_CONTAINER_NAME"}}:8200"
-            {{- else }}
+            {{- end }}
             "token":"{{getv "/config/consul/token"}}",
             "path":"{{getv "/config/consul/path" "vault"}}"
         }
