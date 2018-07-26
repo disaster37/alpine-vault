@@ -3,8 +3,8 @@
 
 if [ ! -f ${APP_HOME}/data/.init ]; then
     touch ${APP_HOME}/data/.init
-    print "You need to init the storage"
-    print "vault operator init -key-shares=1 -key-threshold=1"
+    echo "You need to init the storage"
+    echo "vault operator init -key-shares=1 -key-threshold=1"
 fi
 
 cd ${APP_HOME}
