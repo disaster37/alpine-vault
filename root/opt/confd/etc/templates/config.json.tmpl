@@ -1,0 +1,35 @@
+{
+    
+{{- if eq (getv "/config/storage") "consul" }}
+    "storage":{
+        "consul":{
+            "address":"{{getv "/config/consul/address"}}",
+            "scheme":"{{getv "/config/consul/scheme" "http"}}",
+            {{- if (getenv "SCHEDULER_CONTAINER_NAME") }}
+            "cluster_addr":"http://{{getenv "SCHEDULER_CONTAINER_NAME"}}:8200"
+            {{- else }}
+            "token":"{{getv "/config/consul/token"}}",
+            "path":"{{getv "/config/consul/path" "vault"}}"
+        }
+    },
+{{- else }}
+    "storage":{
+        "file":{
+            "path": "{{getenv "APP_HOME"}}/data"
+        }
+    },
+{{- end }}
+{{- if (exists "/config/defaultleasettl") }}
+    "default_lease_ttl":"{{getv "/config/defaultleasettl"}}",
+{{- end }}
+{{- if (exists "/config/maxleasettl") }}
+    "max_lease_ttl":"{{getv "/config/maxleasettl"}}",
+{{- end }}
+    "ui":true,
+    "listener":{
+        "tcp":{
+            "address":"0.0.0.0:8200",
+            "tls_disable":"true"
+        }
+    }
+}

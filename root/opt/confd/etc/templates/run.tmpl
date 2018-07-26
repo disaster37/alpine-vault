@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv sh
+
+
+if [ ! -f ${APP_HOME}/data/.init ]; then
+    touch ${APP_HOME}/data/.init
+    print "You need to init the storage"
+    print "vault operator init -key-shares=1 -key-threshold=1"
+fi
+
+cd ${APP_HOME}
+su ${USER} -c "${APP_HOME}/bin/vault server -config=${APP_HOME}/conf/config.json"
