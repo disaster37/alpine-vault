@@ -1,1 +1,1 @@
-/opt/consul/data false consul 0660 0770
+/opt/vault/data false vault 0660 0770
